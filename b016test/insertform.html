@@ -1,0 +1,67 @@
+<!DOCTYPE html>                                         <!-- insertform.html (C:\xampp\htdocs\best) -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Record</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        .wrapper{
+            width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>Inserisci i dati in tabella</h2>
+                    </div>
+                    <p>Please fill this form and submit to add employee record to the database.</p>
+                    <form method="post" action="insert.php">
+                        <div class="form-group">
+                            <label>Id Articolo (Campo Chiave obbligatorio)</label>
+                            <input type="num" id="ArtID" placeholder="ArtID" name="ArtID" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Descrizione</label>
+                            <input type="text" id="Descrizione" placeholder="Descrizione" name="Descrizione" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantità</label>
+                            <input type="text" id="Quantità" placeholder="Quantità" name="Quantità" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Prezzo Acquisto</label>
+                            <input type="text" id="PrezzoAc" placeholder="PrezzoAc" name="PrezzoAc" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Prezzo Vendita</label>
+                            <input type="text" id="PrezzoVe" placeholder="PrezzoVe" name="PrezzoVe" class="form-control">
+                        </div>
+                        <input type="submit" class="btn btn-primary" name="submit" id=btSubmit value="Inserisci dati nel database">
+                        <input type="submit" class="btn btn-primary" name="submit2" value="Visualizza tabella" disabled />
+                        <button type="submit" class="btn btn-primary" formaction="index.html">Esci</button>
+                    </form>
+                </div>
+            </div>        
+        </div>
+    </div>
+</body>
+<script>
+    let d = document, [inputs, knapp] = [
+        d.querySelectorAll('[type="num"]'),
+        d.querySelector('#btSubmit')]
+    knapp.disabled = true
+    
+    for (i = 0; i < inputs.length; i++) {
+      inputs[i].addEventListener('input',() => {
+        let values = []
+        inputs.forEach(v => values.push(v.value))
+        knapp.disabled = values.includes('')
+      })
+    }
+    </script>
+</html>
